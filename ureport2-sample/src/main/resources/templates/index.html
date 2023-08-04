@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>UReport Sample Center</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="keywords" content="报表,report,中国报表,中式报表,ureport,bs报表," />
+<meta name="description" content="UReport是一套由锐道自主研发的架构于Spring之上的基于单元格迭代模型的Java报表引擎，提供网页版设计器，精确打印控制，支持各种类型的交叉分组报表展现，可在网页中直接导出word,excel,pdf，或直接在网页中打印输出." />
+<link href="./bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
+<script src="./jquery.min.js"></script>
+<script src="./bootstrap-3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default" role="navigation">
+   <div class="navbar-header">
+      <a class="navbar-brand" href="#">UReport2示例中心</a>
+   </div>
+   <div id="newWindow" style="visibility: hidden;" class="navbar-right">
+	   <p class="navbar-text">
+		   <a href="#" onclick="openInDesigner()" class="navbar-link">在设计器中打开</a>
+	   </p>
+      <p class="navbar-text">
+        <a href="#" onclick="openInNewWindow()" class="navbar-link">新窗口中查看&nbsp;<img alt="" src="arrow.png"  width="16px;" height="16px;"/></a>
+      </p>
+   </div>
+
+</nav>
+<div class="container" style="margin-left: inherit;width:100%">
+   <div class="row">
+	   <div class="col-xs-2">
+			<ul class="list-group">
+				<ul class="list-group">
+					<li class="list-group-item" id="desinger"><a href="#" onclick="openDesigner()">报表设计器</a></li>
+				</ul>
+				<ul class="list-group">
+					<li class="list-group-item" id="test1"><a href="#" onclick="openReport('Test1.ureport.xml','test1')">普通明细报表</a></li>
+					<li class="list-group-item" id="Test01"><a href="#" onclick="openReport('Test01.ureport.xml','Test01')">过滤条件报表</a></li>
+					<li class="list-group-item" id="Test02"><a href="#" onclick="openReport('Test02.ureport.xml','Test02')">排序着色展示报表</a></li>
+					<li class="list-group-item" id="Test03"><a href="#" onclick="openReport('Test03.ureport.xml','Test03')">交叉报表</a></li>
+				</ul>
+				<ul class="list-group">
+					<li class="list-group-item" id="Test18"><a href="#" onclick="openReport('Test18.ureport.xml','Test18')">简单分组报表</a></li>
+					<li class="list-group-item" id="Test04"><a href="#" onclick="openReport('Test04.ureport.xml','Test04')">自定义分组报表</a></li>
+					<li class="list-group-item" id="Test05"><a href="#" onclick="openReport('Test05.ureport.xml','Test05')">交叉分组折叠报表</a></li>
+				</ul>
+				<ul class="list-group">
+					<li class="list-group-item" id="Test06"><a href="#" onclick="openReport('Test06.ureport.xml','Test06')">简单多源报表</a></li>
+					<li class="list-group-item" id="Test17"><a href="#" onclick="openReport('Test17.ureport.xml','Test17')">多源多片交叉报表</a></li>
+					<li class="list-group-item" id="Test12"><a href="#" onclick="openReport('Test12.ureport.xml','Test12')">简单主子报表</a></li>
+				</ul>
+				<ul class="list-group">
+					<li class="list-group-item" id="Test14"><a href="#" onclick="openReport('Test14.ureport.xml','Test14')">数据比较统计</a></li>
+					<li class="list-group-item" id="Test16"><a href="#" onclick="openReport('Test16.ureport.xml','Test16')">中文大写样式的数字</a></li>
+					<li class="list-group-item" id="Test15"><a href="#" onclick="openReport('Test15.ureport.xml','Test15')">日期展示</a></li>
+				</ul>
+				<ul class="list-group">
+					<li class="list-group-item" id="Test3"><a href="#" onclick="openReport('Test3.ureport.xml','Test3')">环比报表</a></li>
+					<li class="list-group-item" id="Test4"><a href="#" onclick="openReport('Test4.ureport.xml','Test4')">同比报表</a></li>
+					<li class="list-group-item" id="Test5"><a href="#" onclick="openReport('Test5.ureport.xml','Test5')">逐层累加报表</a></li>
+					<li class="list-group-item" id="Test6"><a href="#" onclick="openReport('Test6.ureport.xml','Test6')">条件汇总报表</a></li>
+					<li class="list-group-item" id="Test7"><a href="#" onclick="openReport('Test7.ureport.xml','Test7')">占比报表</a></li>
+					<li class="list-group-item" id="Test8"><a href="#" onclick="openReport('Test8.ureport.xml','Test8')">累计平均值报表</a></li>
+					<li class="list-group-item" id="Test9"><a href="#" onclick="openReport('Test9.ureport.xml','Test9')">组内排名报表</a></li>
+					<li class="list-group-item" id="test2"><a href="#" onclick="openReport('Test2.ureport.xml','test2')">求最大最小值报表</a></li>
+				</ul>
+				<ul class="list-group">
+					<li class="list-group-item" id="Test11"><a href="#" onclick="openReport('Test11.ureport.xml','Test11')">组内序号报表</a></li>
+					<li class="list-group-item" id="Test08"><a href="#" onclick="openReport('Test08.ureport.xml','Test08')">行号报表</a></li>
+					<li class="list-group-item" id="Test09"><a href="#" onclick="openReport('Test09.ureport.xml','Test09')">列号报表</a></li>
+				</ul>
+
+
+			</ul>
+
+	   </div>
+	   <div class="col-xs-10">
+	   	<iframe name="frame" id="frame" src="https://www.w3cschool.cn/ureport2/" style="border: 1px solid #DDD;width: 100%;padding: 10px"></iframe>
+	   </div>
+   </div>
+</div>
+<script type="text/javascript">
+var prevLi=null;
+var ureport=null;
+$(document).ready(function(){
+	resetIFrameHeight();
+});
+function resetIFrameHeight(){
+	var height=$(document).height()-110;
+	$("#frame").height(height);
+}
+function openReport(path,li){
+	if(prevLi){
+		prevLi.css("background-color","");
+	}
+	prevLi=$("#"+li);
+	prevLi.css("background-color","#FDD");
+	var url="./ureport/preview?_u=file:"+path;
+	if(path=="search"){
+		url="search.html";
+	}
+	ureport=url;
+	open(url,"frame");
+	$("#newWindow").css("visibility","visible");
+}
+function openInNewWindow(){
+	if(!ureport){
+		return;
+	}
+	open(ureport);
+}
+
+/**
+ * 在报表设计器中打开模板
+ */
+function openInDesigner() {
+	if(!ureport){
+		return;
+	}
+	ureport=ureport.replace("preview","designer")
+	open(ureport);
+}
+
+/**
+ * 打开设计器
+ */
+function openDesigner(){
+	open("./ureport/designer");
+}
+</script>
+</body>
+</html>

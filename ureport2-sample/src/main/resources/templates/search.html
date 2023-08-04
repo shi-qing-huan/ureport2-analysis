@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>UReport Sample Center</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="keywords" content="报表,report,中国报表,中式报表,ureport,bs报表,">
+<meta name="description" content="UReport是一套由锐道自主研发的架构于Spring之上的基于单元格迭代模型的Java报表引擎，提供网页版设计器，精确打印控制，支持各种类型的交叉分组报表展现，可在网页中直接导出word,excel,pdf，或直接在网页中打印输出.">
+<link href="../static/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet">
+<script src="../static/jquery.min.js"></script>
+<script src="../static/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container" style="margin-left: inherit;margin-top:10px;width:100%">
+   <div class="row">
+   <div class="col-xs-3">
+	   <div class="input-group">
+         <span class="input-group-addon">公司名：</span>
+         <input type="text" class="form-control" id="branchName" placeholder="上海分公司、北京分公司等">
+      </div>
+   </div>
+   <div class="col-xs-3">
+	   <div class="input-group">
+         <span class="input-group-addon">学历名：</span>
+         <input type="text" class="form-control" id="degree" placeholder="大专、本科等">
+      </div>
+   </div>
+   <div class="col-xs-3">
+	   <div class="input-group">
+         <span class="input-group-addon">背景：</span>
+         <input type="text" class="form-control" id="background" placeholder="学生、公务员等">
+      </div>
+   </div>
+   <div class="col-xs-3">
+	  <button type="button" class="btn btn-default" onclick="search();">查询</button>
+   </div>
+   </div>
+   <div class="row">
+	   <div class="col-xs-12">
+	   	<iframe name="contentFrame" id="contentFrame" src="ureport?action=htmlpreview&report=classpath:crosstab/multi-piece-crosstab-right-parameters" style="border: 1px solid #DDD;width: 100%;padding: 10px;margin-top:10px"></iframe>
+	   </div>
+   </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){
+	resetIFrameHeight();
+});
+function resetIFrameHeight(){
+	var height=$(document).height()-105;
+	$("#contentFrame").height(height);
+}
+function search(){
+	var branchName=$("#branchName").prop("value");
+	var degree=$("#degree").prop("value");
+	var background=$("#background").prop("value");
+	var url="ureport?action=htmlpreview&report=classpath:crosstab/multi-piece-crosstab-right-parameters";
+	if(branchName && branchName.length>0){
+		url+="&branchName="+branchName;
+	}
+	if(degree && degree.length>0){
+		url+="&degree="+degree;
+	}
+	if(background && background.length>0){
+		url+="&background="+background;
+	}
+	open(url,"contentFrame");
+}
+</script>
+</body>
+</html>
